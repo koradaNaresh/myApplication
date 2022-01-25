@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <span class="title">{{userName}}</span>
+        <div class="nav navbar-nav navbar-right">
+            <a href="javascript:void(0)" (click)="logout()" class="navbar-brand"><strong><i class="fa fa-sign-out" aria-hidden="true"></i></strong> </a>
+         </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <table class="table table-stripped table-bordered" *ngIf="tabledata.length>0"> 
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fisrt Name</th>
+                <th>Last Name</th>
+                <th>Eamil</th>
+                <th>Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of tabledata">
+                <td>{{item.id}}</td>
+                <td>{{item.first_name}}</td>
+                <td>{{item.last_name}}</td>
+                <td>{{item.email}}</td>
+                <td><img class="avathar" src='{{item.avatar}}'/></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+

@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <div class="row main-content bg-success text-center">
+        <div class="col-md-4 text-center company__info">
+            <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
+            <h4 class="company_title">Your Company Logo</h4>
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+            <div class="container-fluid">
+                <div class="row">
+                    <h2>Log In</h2>
+                </div>
+                <div class="row">
+                    <form  [formGroup]="authForm" (ngSubmit)="submitForm()" control="" class="form-group">
+                        <div class="row">
+                            <input type="text" name="username" id="username" class="form__input" formControlName="email"
+                            placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+                            <div *ngIf="authForm.controls['email'].invalid && (authForm.controls['email'].dirty || authForm.controls['email'].touched)" class="errBlock">
+                                <div *ngIf="authForm.controls['email'].errors && authForm.controls['email'].errors.required" class="alert alert-danger">
+                                     User Email is required.
+                              </div>
+                              <div  *ngIf="authForm.controls['email'].errors && !authForm.controls['email'].errors.required &&  authForm.controls['email'].errors.pattern" class="alert alert-danger">
+                                Email is invalid
+                            </div>
+                        </div>
+                            
+                        </div>
+                        <div class="row">
+                            <!-- <span class="fa fa-lock"></span> -->
+                            <input type="password" name="password" id="password" class="form__input" formControlName="password"
+                            placeholder="Password">
+
+                            <div *ngIf="authForm.controls['password'].invalid && (authForm.controls['password'].dirty || authForm.controls['password'].touched)" class="errBlock">
+                                <div *ngIf="authForm.controls['password'].errors && authForm.controls['password'].errors.required" class="alert alert-danger"> 
+                                    Password is required.
+                              </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div (click)="acceptCondtions($event,mymodal)">
+                                    <input type="checkbox" formControlName="acceptTerms"  id="acceptTerms" class="form-check-input" style="float: left;margin-right: 10px;" [ngClass]="{ 'is-invalid': authForm.controls['acceptTerms'].errors }"/>
+                                    <label for="remember_me" style="float: left;">Accept terms and condtions</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="submit" value="Submit" class="btn" [disabled]="!authForm.valid">
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Terms and Conditions
+    Welcome to Website Name!
+    
+    These terms and conditions outline the rules and regulations for the use of Company Name's Website, located at Website.com.
+    
+    By accessing this website we assume you accept these terms and conditions. Do not continue to use Website Name if you do not agree to take all of the terms and conditions stated on this page.
+    
+    The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: “Client”, “You” and “Your” refers to you, the person log on this website and compliant to the Company's terms and conditions. “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.
+    
+    Cookies
+    We employ the use of cookies. By accessing Website Name, you agreed to use cookies in agreement with the Company Name's Privacy Policy.
+    
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
+
+
+</div>
+
+
